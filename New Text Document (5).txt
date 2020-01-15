@@ -1,0 +1,63 @@
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="Create" ng-cloak style="width: 450px;">
+      <md-toolbar class="toolbar-white">
+        <div class="md-toolbar-tools">
+          <md-button ng-click="close()" class="md-icon-button" aria-label="Close"> <i class="ion-android-arrow-forward"></i> </md-button>
+          <md-truncate><?php echo lang('addproduct') ?></md-truncate>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <md-content layout-padding>
+          <md-input-container class="md-block">
+            <label><?php echo lang('productname') ?></label>
+            <input required type="text" ng-model="product.productname" class="form-control" id="name" placeholder="<?php echo lang('productname'); ?>" />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label><?php echo lang('productcategory'); ?></label>
+            <md-select placeholder="<?php echo lang('productcategory'); ?>" ng-model="product.categoryid" style="min-width: 200px;">
+              <md-select-header>
+                <md-toolbar class="toolbar-white">
+                  <div class="md-toolbar-tools">
+                    <h4 flex md-truncate><?php echo lang('categories') ?></h4>
+                    <md-button class="md-icon-button" ng-click="NewCategory()" aria-label="Create New">
+                      <md-icon><i class="mdi mdi-plus text-muted"></i></md-icon>
+                    </md-button>
+                  </div>
+                </md-toolbar>
+              </md-select-header>
+              <md-option ng-value="name.id" ng-repeat="name in category">{{name.name}}</md-option>
+            </md-select>
+          </md-input-container>
+          <br>
+          <md-input-container class="md-block">
+            <label><?php echo lang('purchaseprice') ?></label>
+            <input required type="number" ng-model="product.purchase_price" class="form-control" id="amount" placeholder="0.00" />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label><?php echo lang('salesprice') ?></label>
+            <input required type="number" ng-model="product.sale_price" class="form-control" id="amount" placeholder="0.00" />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label><?php echo lang('productcode') ?></label>
+            <input type="text" ng-model="product.code" class="form-control" id="productcode" placeholder="<?php echo lang('productcode'); ?>" />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label><?php echo $appconfig['tax_label'] ?></label>
+            <input type="number" ng-model="product.vat" ng-value="0" class="form-control" id="tax" placeholder="<?php echo $appconfig['tax_label']; ?>" />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label><?php echo lang('instock') ?></label>
+            <input type="number" ng-model="product.stock" ng-value="0" class="form-control" id="stock" placeholder="<?php echo lang('instock'); ?>" />
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label><?php echo lang('description') ?></label>
+            <textarea required name="description" ng-model="product.description" placeholder="<?php echo lang('typeSomething'); ?>" class="form-control"></textarea>
+          </md-input-container>
+        </md-content>
+        <custom-fields-vertical></custom-fields-vertical>
+        <md-content layout-padding>
+          <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+            <md-button ng-click="AddProduct()" class="md-raised md-primary pull-right"><?php echo lang('add'); ?></md-button>
+          </section>
+        </md-content>
+      </md-content>
+    </md-sidenav>
